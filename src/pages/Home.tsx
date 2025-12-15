@@ -1,19 +1,26 @@
 import { Link } from "react-router";
-import heroBg from "../assets/images/bg-img2.jpg"
+import heroBg from "../assets/images/bg-img2.jpg";
 
 export const Home = () => {
   return (
     <div className="fade-in">
       {/* HERO */}
-      <section className="min-h-[90vh] flex flex-col items-center justify-center text-center px-6 bg-cover bg-center bg-no-repeat"
-      style={{backgroundImage: `url(${heroBg})`}}>
-        <h1 className="text-4xl md:text-6xl mb-6">Discover timeless art.</h1>
-        <p className="max-w-xl opacity-80">
-          Curate your personal gallery. Add your own reflections.
-        </p>
-        <Link to="/explore" className="btn-primary mt-10">
-          Explore the Collection
-        </Link>
+      <section
+        className="min-h-screen flex flex-col items-center justify-center text-center px-6 bg-cover bg-center bg-no-repeat -mt-20"
+        style={{ backgroundImage: `url(${heroBg})` }}
+      >
+        {/* OVERLAY */}
+        <div className="absolute inset-0 bg-white/50 dark:bg-black/80" />
+        {/* CONTENT */}
+        <div className="relative z-10 max-w-3xl">
+          <h1 className="text-4xl md:text-6xl mb-6">Discover timeless art.</h1>
+          <p className="max-w-xl opacity-80">
+            Curate your personal gallery. Add your own reflections.
+          </p>
+          <Link to="/explore" className="btn-primary mt-10 inline-block">
+            Explore the Collection
+          </Link>
+        </div>
       </section>
 
       {/* FEATURES */}
