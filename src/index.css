@@ -1,1 +1,70 @@
 @import "tailwindcss";
+
+
+:root {
+--bg: #F9F7E9;
+--text: #3F170E;
+--accent: #D56A34;
+--accent-soft: #D87644;
+}
+
+
+.dark {
+--bg: #3F170E;
+--text: #F9F7E9;
+--accent: #EFCA74;
+--accent-soft: #C08C46;
+}
+
+
+html, body {
+background-color: var(--bg);
+color: var(--text);
+font-family: "Poppins", sans-serif;
+}
+
+
+h1, h2, h3, h4, h5 {
+font-family: "Tenor Sans", sans-serif;
+letter-spacing: 0.04em;
+}
+
+
+/* reusable classes */
+.btn-primary {
+background-color: var(--accent);
+color: white;
+padding: 0.75rem 2rem;
+border-radius: 9999px;
+transition: opacity 0.2s ease;
+}
+
+
+.btn-primary:hover {
+opacity: 0.9;
+}
+
+
+.glass {
+backdrop-filter: blur(12px);
+background-color: color-mix(in srgb, var(--bg) 70%, transparent);
+border-bottom: 1px solid color-mix(in srgb, var(--text) 10%, transparent);
+}
+
+
+/* subtle animation */
+.fade-in {
+animation: fadeIn 0.8s ease-out both;
+}
+
+
+@keyframes fadeIn {
+from {
+opacity: 0;
+transform: translateY(12px);
+}
+to {
+opacity: 1;
+transform: translateY(0);
+}
+}
