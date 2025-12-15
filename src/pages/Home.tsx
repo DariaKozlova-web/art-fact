@@ -1,0 +1,61 @@
+import { Link } from "react-router";
+import heroBg from "../assets/images/bg-img2.jpg"
+
+export const Home = () => {
+  return (
+    <div className="fade-in">
+      {/* HERO */}
+      <section className="min-h-[90vh] flex flex-col items-center justify-center text-center px-6 bg-cover bg-center bg-no-repeat"
+      style={{backgroundImage: `url(${heroBg})`}}>
+        <h1 className="text-4xl md:text-6xl mb-6">Discover timeless art.</h1>
+        <p className="max-w-xl opacity-80">
+          Curate your personal gallery. Add your own reflections.
+        </p>
+        <Link to="/explore" className="btn-primary mt-10">
+          Explore the Collection
+        </Link>
+      </section>
+
+      {/* FEATURES */}
+      <section className="max-w-7xl mx-auto grid md:grid-cols-3 gap-10 px-6 py-24">
+        <Feature
+          title="Explore Art"
+          text="Search the Art Institute of Chicago collection."
+        />
+        <Feature
+          title="Personal Gallery"
+          text="Save artworks that inspire you."
+        />
+        <Feature
+          title="Your Notes"
+          text="Add reflections and personal meaning."
+        />
+      </section>
+
+      {/* QUOTE */}
+      <section className="text-center px-6 py-24 opacity-80">
+        <blockquote className="text-xl md:text-2xl font-heading">
+          “Art enables us to find ourselves and lose ourselves at the same
+          time.”
+        </blockquote>
+        <p className="mt-4">— Thomas Merton</p>
+      </section>
+
+      {/* FOOTER */}
+      <footer className="py-16 text-center text-sm opacity-70">
+        <p className="font-heading mb-2">Art&Fact</p>
+        <p>Discover. Collect. Reflect.</p>
+        <p className="mt-4">© 2025 · Art Institute of Chicago API</p>
+      </footer>
+    </div>
+  );
+};
+
+function Feature({ title, text }: { title: string; text: string }) {
+  return (
+    <div className="p-8 rounded-xl hover:-translate-y-1 transition">
+      <h3 className="text-xl mb-3">{title}</h3>
+      <p className="opacity-70">{text}</p>
+    </div>
+  );
+}

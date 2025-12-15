@@ -1,9 +1,9 @@
-import { Home } from "lucide-react";
 import { BrowserRouter, Routes, Route } from "react-router";
 import { ThemeProvider } from "./context/ThemeProvider";
 import { MainLayout } from "./layouts/MainLayout";
 import { Explore } from "./pages/Explore";
 import { Gallery } from "./pages/Gallery";
+import { Home } from "./pages/Home";
 
 function App() {
   return (
