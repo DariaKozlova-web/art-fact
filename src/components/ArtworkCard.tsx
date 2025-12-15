@@ -39,7 +39,7 @@ export const ArtworkCard = ({ artwork, isSaved, onToggle }: Props) => {
             size={22}
             className={
               isSaved
-                ? "fill-[var(--accent)] text-[var(--accent)]"
+                ? "fill-(--accent) text-(--accent)"
                 : "text-white"
             }
           />

@@ -10,7 +10,8 @@ export const Home = () => {
         style={{ backgroundImage: `url(${heroBg})` }}
       >
         {/* OVERLAY */}
-        <div className="absolute inset-0 bg-white/50 dark:bg-black/80" />
+        <div className="absolute inset-0"
+        style={{ backgroundColor: "var(--hero-overlay)" }}/>
         {/* CONTENT */}
         <div className="relative z-10 max-w-3xl">
           <h1 className="text-4xl md:text-6xl mb-6">Discover timeless art.</h1>

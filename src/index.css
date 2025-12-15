@@ -6,6 +6,7 @@
 --text: #3F170E;
 --accent: #D56A34;
 --accent-soft: #D87644;
+--hero-overlay: rgba(255, 255, 255, 0.55);
 }
 
 
@@ -14,6 +15,7 @@
 --text: #F9F7E9;
 --accent: #EFCA74;
 --accent-soft: #C08C46;
+--hero-overlay: rgba(0, 0, 0, 0.7);
 }
 
 
