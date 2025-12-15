@@ -11,6 +11,14 @@ export const Gallery = () => {
     return JSON.parse(localStorage.getItem("gallery") || "[]");
   });
 
+  const updateNote = (id: number, note: string) => {
+    const updated = gallery.map((item) =>
+      item.id === id ? { ...item, note } : item
+    );
+    setGallery(updated);
+    localStorage.setItem("gallery", JSON.stringify(updated));
+  };
+
   const removeArtwork = (id: number) => {
     const updated = gallery.filter((item) => item.id !== id);
     setGallery(updated);
@@ -51,7 +59,18 @@ export const Gallery = () => {
                 {artwork.artist_title}
               </p>
 
-             
+              <textarea
+                placeholder="Add your reflection..."
+                value={artwork.note || ""}
+                onChange={(e) =>
+                  updateNote(artwork.id, e.target.value)
+                }
+                className="
+                  mt-4 w-full rounded-lg p-3 text-sm
+                  bg-transparent border
+                  border-[color-mix(in srgb, var(--text) 20%, transparent)]
+                "
+              />
 
               <button
                 onClick={() => removeArtwork(artwork.id)}
