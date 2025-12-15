@@ -1,1 +1,65 @@
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&family=Tenor+Sans&display=swap');
+
+
+@tailwind utilities;
+
+
+@layer base {
+:root {
+--color-bg: #F9F7E9;
+--color-text: #3F170E;
+--color-accent: #D56A34;
+--color-accent-soft: #D87644;
+}
+
+
+.dark {
+--color-bg: #3F170E;
+--color-text: #F9F7E9;
+--color-accent: #EFCA74;
+--color-accent-soft: #C08C46;
+}
+
+
+body {
+@apply font-body bg-(--color-bg) text-(--color-text) antialiased;
+}
+
+
+h1, h2, h3, h4, h5 {
+@apply font-heading tracking-wide;
+}
+}
+
+
+@layer components {
+.btn-primary {
+@apply px-8 py-3 rounded-full bg-(--color-accent) text-white hover:opacity-90 transition;
+}
+
+
+.glass {
+@apply backdrop-blur-md bg-(--color-bg)/70 border border-black/5 dark:border-white/10;
+}
+}
+
+
+@layer utilities {
+.fade-in {
+animation: fadeIn 0.8s ease-out both;
+}
+
+
+@keyframes fadeIn {
+from {
+opacity: 0;
+transform: translateY(12px);
+}
+to {
+opacity: 1;
+transform: translateY(0);
+}
+}
+}
+
