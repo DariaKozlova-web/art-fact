@@ -9,7 +9,7 @@ export function SearchBar({ onSearch }: Props) {
   const [searchText, setSearchText] = useState("");
 
   return (
-    <div className="max-w-xl mx-auto">
+    <div className="max-w-xl mx-auto px-4">
       <div className="search-wrapper">
         <Search size={18} className="opacity-60 ml-3" />
 

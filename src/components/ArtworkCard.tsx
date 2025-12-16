@@ -33,14 +33,11 @@ export const ArtworkCard = ({ artwork, isSaved, onToggle }: Props) => {
       {onToggle && (
         <button
           onClick={() => onToggle(artwork)}
-          className="absolute top-4 right-4 z-10"
-        >
+          className="absolute top-4 right-4 z-10 flex h-9 w-9 items-center justify-center rounded-full bg-black/35 backdrop-blur-md transition hover:bg-black/50">
           <Heart
-            size={22}
+            size={18}
             className={
-              isSaved
-                ? "fill-(--accent) text-(--accent)"
-                : "text-white"
+              isSaved ? "fill-(--accent) text-(--accent)" : "text-white"
             }
           />
         </button>
