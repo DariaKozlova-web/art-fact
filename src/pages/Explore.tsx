@@ -6,6 +6,8 @@ import { ArtworkCard } from "../components/ArtworkCard";
 
 export const Explore = () => {
   const [cardItems, setCardItems] = useState<Artwork[]>([]);
+  const [defaultItems, setDefaultItems] = useState<Artwork[]>([]);
+  const [noResults, setNoResults]=useState(false);
   const [gallery, setGallery] = useState<Artwork[]>(()=>{
     return JSON.parse(localStorage.getItem("gallery")||"[]")
   });
@@ -13,15 +15,33 @@ export const Explore = () => {
     const fetchData = async () => {
       const items = await ArtworksService.searchArtworks();
       setCardItems(items);
+      setDefaultItems(items);
     };
     fetchData();
   }, []);
 
   const handleSearch = async (text: string) => {
-    console.log(text);
+    if(!text.trim()){
+      setCardItems(defaultItems);
+      setNoResults(false);
+      return
+    }
     const items = await ArtworksService.searchArtworks(text);
-    setCardItems(items);
+    if(items.length===0){
+      setNoResults(true);
+      setCardItems([]);
+    }else{
+      setNoResults(false);
+      setCardItems(items);
+    }
   };
+
+  const handleChange = (text:string) => {
+    if(!text.trim()){
+      setCardItems(defaultItems);
+      setNoResults(false);
+    }
+  }
 
   const toggleGallery = (artwork: Artwork)=>{
     const exists = gallery.some((item)=>item.id === artwork.id);
@@ -32,15 +52,22 @@ export const Explore = () => {
 
   return (
     <section className="max-w-7xl mx-auto px-6 py-12">
-      <SearchBar onSearch={handleSearch} />
-      <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-10 mt-12">
+      <SearchBar onSearch={handleSearch} onChange={handleChange}/>
+      {noResults&&(<div className="text-center mt-20 opacity-70">
+        <p className="mb-6 text-lg">Nothing was found for your search</p>
+        <button onClick={()=>{
+          setCardItems(defaultItems);
+          setNoResults(false);
+        }} className="btn-primary">Go back</button>
+      </div>)}
+        {!noResults&&(<div className="grid sm:grid-cols-2 md:grid-cols-3 gap-10 mt-12">
         {cardItems.map((item) => {
           return (
             // <div key={item.id}>{item.title}</div>
             <ArtworkCard key={item.id} artwork={item} isSaved={gallery.some((g)=>g.id===item.id)} onToggle={toggleGallery}/>
           );
         })}
-      </div>
+      </div>)}
     </section>
   );
 };

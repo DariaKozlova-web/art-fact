@@ -3,10 +3,16 @@ import { Search } from "lucide-react";
 
 type Props = {
   onSearch: (query: string) => void;
+  onChange?: (query: string)=> void;
 };
 
-export function SearchBar({ onSearch }: Props) {
+export function SearchBar({ onSearch, onChange }: Props) {
   const [searchText, setSearchText] = useState("");
+
+  const handleChange = (text: string) => {
+    setSearchText(text);
+    onChange?.(text)
+  }
 
   return (
     <div className="max-w-xl mx-auto px-4">
@@ -15,7 +21,7 @@ export function SearchBar({ onSearch }: Props) {
 
         <input
           value={searchText}
-          onChange={(e) => setSearchText(e.target.value)}
+          onChange={(e) => handleChange(e.target.value)}
           onKeyDown={(e) => {
             if (e.key === "Enter") onSearch(searchText);
           }}
