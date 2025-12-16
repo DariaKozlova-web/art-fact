@@ -9,9 +9,10 @@ type Props = {
 
 export const GalleryCard = ({ artwork, onView, onRemove }: Props) => {
   return (
-    <div className="rounded-xl overflow-hidden flex flex-col h-105 border
-      border-[color-mix(in srgb, var(--text) 15%, transparent)]">
-
+    <div
+      className="rounded-xl overflow-hidden flex flex-col h-105 border
+      border-[color-mix(in srgb, var(--text) 15%, transparent)]"
+    >
       {artwork.image_id && (
         <img
           src={`https://www.artic.edu/iiif/2/${artwork.image_id}/full/400,/0/default.jpg`}
@@ -21,12 +22,23 @@ export const GalleryCard = ({ artwork, onView, onRemove }: Props) => {
       )}
 
       <div className="p-4 flex flex-col flex-1">
-        <h3 className="text-sm leading-snug line-clamp-2">
-          {artwork.title}
-        </h3>
+        <h3 className="text-sm leading-snug line-clamp-2">{artwork.title}</h3>
+        {/* ARTIST */}
+        {artwork.artist_title && (
+          <p className="text-xs opacity-70 mt-1 line-clamp-1">
+            {artwork.artist_title}
+          </p>
+        )}
+
+        {/* PLACE */}
+        {artwork.place_of_origin && (
+          <p className="text-[11px] opacity-50 mt-1">
+            {artwork.place_of_origin}
+          </p>
+        )}
 
         {artwork.note && (
-          <p className="text-xs opacity-60 mt-2 line-clamp-2">
+          <p className="text-xs italic opacity-60 mt-3 line-clamp-2">
             “{artwork.note}”
           </p>
         )}

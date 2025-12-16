@@ -68,10 +68,21 @@ export const ArtworkModal = ({
             )}
 
             <div>
-              <p className="opacity-70 mb-4">
-                {artwork.artist_title}
-              </p>
+              <div className="space-y-2 mb-4 text-sm">
+                {artwork.artist_title && (
+                  <p>
+                    <span className="opacity-60">Artist:</span>{" "}
+                    {artwork.artist_title}
+                  </p>
+                )}
 
+                {artwork.place_of_origin && (
+                  <p>
+                    <span className="opacity-60">Origin:</span>{" "}
+                    {artwork.place_of_origin}
+                  </p>
+                )}
+              </div>
               <textarea
                 value={note}
                 onChange={(e) => setNote(e.target.value)}
