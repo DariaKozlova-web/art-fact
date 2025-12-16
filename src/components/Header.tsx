@@ -10,7 +10,7 @@ export const Header = () => {
   const { theme, toggleTheme } = useTheme();
 
   return (
-    <header className="fixed top-0 w-full z-50 glass">
+    <header className="fixed top-0 w-full z-40 glass">
     {/* backdrop-blur-md bg-[#F9F7E9]/70 dark:bg-[#3F170E]/70 border-b border-black/5 dark:border-white/10 */}
       <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
         <NavLink to="/">
