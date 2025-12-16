@@ -77,6 +77,8 @@ transform: translateY(0);
 
 .search-wrapper {
   display: flex;
+  max-width: 100%;
+  box-sizing: border-box;
   align-items: center;
   gap: 0.5rem;
   padding: 0.5rem;
@@ -89,6 +91,7 @@ transform: translateY(0);
 
 .search-input {
   flex: 1;
+  min-width: 0;
   background: transparent;
   border: none;
   outline: none;
@@ -117,4 +120,15 @@ transform: translateY(0);
 /* Focus state */
 .search-wrapper:focus-within {
   border-color: var(--accent);
+}
+
+@media (max-width: 480px) {
+  .search-btn {
+    padding: 0.5rem 0.9rem;
+    font-size: 0.75rem;
+  }
+
+  .search-input {
+    padding: 0.6rem 0.75rem;
+  }
 }
